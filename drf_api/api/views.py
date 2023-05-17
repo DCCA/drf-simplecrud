@@ -68,9 +68,9 @@ def update_items(request, pk):
 # DELETE
 @api_view(['DELETE'])
 def delete_items(request, pk):
-    item = Item.objects.get(pk=pk)    
-    
-    item.delete()
-    
-    return Response(status=status.HTTP_202_ACCEPTED)
+    try:
+        item = Item.objects.get(pk=pk)
+        return Response(status=status.HTTP_202_ACCEPTED)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
     
