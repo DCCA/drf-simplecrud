@@ -1,0 +1,30 @@
+sudo -u postgres psql -c 'SHOW config_file'
+
+sudo nano /etc/postgresql/13/main/postgresql.conf      
+
+# uncomment line 59: 
+
+#------------------------------------------------------------------------------
+# CONNECTIONS AND AUTHENTICATION
+#------------------------------------------------------------------------------
+# - Connection Settings -
+listen_addresses = 'localhost'		# what IP address(es) to listen on;
+#------------------------------------------------------------------------------
+# Save file and restart
+
+sudo service postgresql stop  
+
+sudo service postgresql start
+
+# https://www.pgadmin.org/download/pgadmin-4-windows/
+
+# Download it here and install it.
+
+# In the popup Create — Server window:
+
+# General tab: I set Name to test
+
+# Connection tab: I set Host name/address to 127.0.0.1 (Note: some post said you can set it as localhost, but it causes errors for me)
+# port:5432
+# Leave maintenance database and Username as default postgres
+# Password: whatever password you set up earlier for PostgreSQL in WSL 2, click Save password
